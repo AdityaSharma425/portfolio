@@ -1,0 +1,253 @@
+/* ═══════════════════════════════════════════════════════
+   THEME UI — Unique elements per dimension (not just color)
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Section badges ─── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.section-badge-terminal {
+  font-family: var(--font-mono);
+  background: rgba(0, 255, 255, 0.06);
+  border-radius: 4px;
+}
+
+.section-badge-blink {
+  animation: badge-blink 1s step-end infinite;
+}
+
+@keyframes badge-blink {
+  50% { opacity: 0; }
+}
+
+.section-badge-military {
+  font-family: var(--font-mono);
+  background: rgba(245, 166, 35, 0.08);
+  border-radius: 2px;
+  text-transform: uppercase;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.section-badge-agent {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  background: rgba(255, 70, 85, 0.1);
+}
+
+.section-badge-seal {
+  font-family: var(--font-serif, Georgia, serif);
+  border-radius: 50px;
+  border-width: 2px;
+  background: rgba(201, 162, 39, 0.06);
+}
+
+.section-badge-blood {
+  border-color: var(--accent-cyan);
+  background: rgba(196, 30, 58, 0.08);
+  border-left-width: 3px;
+}
+
+.section-badge-component {
+  border-radius: 8px;
+  background: rgba(162, 89, 255, 0.06);
+  border: 1px dashed var(--accent-cyan);
+}
+
+.section-badge-layer {
+  font-family: var(--font-mono);
+  border-radius: 0;
+  border-left: 3px solid var(--accent-cyan);
+  background: var(--bg-secondary);
+}
+
+.section-badge-sketch {
+  font-family: Georgia, serif;
+  font-style: italic;
+  border: none;
+  border-bottom: 2px solid var(--accent-cyan);
+  background: transparent;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.section-badge-palette {
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(224, 64, 251, 0.1), rgba(0, 188, 212, 0.1));
+  border: none;
+}
+
+/* ─── Glass panel shapes per theme ─── */
+body[data-ui='hud'] .glass-panel {
+  border-radius: 4px;
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.06), inset 0 0 30px rgba(0, 240, 255, 0.02);
+}
+
+body[data-ui='scope'] .glass-panel {
+  border-radius: 2px;
+  border: 1px solid var(--accent-cyan);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+body[data-ui='valorant'] .glass-panel {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  border-radius: 0;
+}
+
+body[data-ui='scroll'] .glass-panel {
+  border-radius: 2px;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: inset 0 0 20px rgba(201, 162, 39, 0.04);
+}
+
+body[data-ui='torii'] .glass-panel {
+  border-top: 2px solid var(--accent-cyan);
+  border-radius: 0 0 8px 8px;
+}
+
+body[data-ui='artboard'] .glass-panel {
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 4px 24px rgba(162, 89, 255, 0.08);
+}
+
+body[data-ui='layers'] .glass-panel {
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--accent-cyan);
+  border: 1px solid var(--bg-secondary);
+}
+
+body[data-ui='easel'] .glass-panel {
+  border-radius: 1px;
+  border: 1px solid rgba(44, 44, 44, 0.15);
+  box-shadow: 2px 3px 0 rgba(44, 44, 44, 0.08);
+}
+
+body[data-ui='canvas'] .glass-panel {
+  border-radius: 20px 4px 20px 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+body[data-ui='canvas'] .glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink), var(--accent-purple));
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* ─── Theme-specific section dividers ─── */
+body[data-ui='hud'] section::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--accent-cyan);
+  margin: 0 auto 0;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+body[data-ui='scope'] .portfolio-main {
+  background-image: radial-gradient(circle at 50% 0%, rgba(245, 166, 35, 0.03) 0%, transparent 50%);
+}
+
+body[data-ui='valorant'] h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+body[data-ui='scroll'] h2 {
+  font-family: var(--font-serif, Georgia, serif);
+}
+
+body[data-ui='torii'] .portfolio-main {
+  background-image: radial-gradient(ellipse at 90% 5%, rgba(196, 30, 58, 0.04) 0%, transparent 40%);
+}
+
+body[data-ui='artboard'] h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+body[data-ui='easel'] h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+body[data-ui='canvas'] h2 {
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Header chrome per theme ─── */
+body[data-ui='scope'] header {
+  border-bottom: 2px solid var(--accent-cyan) !important;
+}
+
+body[data-ui='valorant'] header {
+  border-bottom: 3px solid var(--accent-cyan) !important;
+}
+
+body[data-ui='torii'] header {
+  border-bottom: 1px solid var(--accent-cyan);
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
+}
+
+/* ─── Button shapes ─── */
+body[data-ui='valorant'] .glass-panel.interactive[href],
+body[data-ui='valorant'] a.glass-panel {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+body[data-ui='artboard'] a.glass-panel,
+body[data-ui='artboard'] button.glass-panel {
+  border-radius: 999px !important;
+}
+
+body[data-ui='canvas'] a.glass-panel {
+  border-radius: 999px !important;
+}
+
+/* ─── Terminal unique chrome ─── */
+body[data-ui='scope'] #terminal-section .glass-panel {
+  border: 2px solid var(--accent-cyan);
+}
+
+body[data-ui='scroll'] #terminal-section .glass-panel {
+  border: double 3px var(--accent-cyan);
+}
+
+body[data-ui='layers'] #terminal-section .glass-panel {
+  border-left: 4px solid var(--accent-cyan);
+}
+
+/* Portfolio hidden behind gate */
+.portfolio-hidden {
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.portfolio-enter {
+  animation: portfolio-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes portfolio-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

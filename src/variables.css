@@ -1,0 +1,242 @@
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --accent-cyan: #00f0ff;
+  --accent-pink: #ff007f;
+  --accent-red: #ff3366;
+  --accent-crimson: #c8003c;
+  --accent-purple: #8a2be2;
+  --grid-color: rgba(0, 240, 255, 0.05);
+  --border-glow: rgba(0, 240, 255, 0.3);
+  --surface: rgba(20, 20, 20, 0.8);
+  --card-border: 1px solid rgba(0, 240, 255, 0.15);
+  --card-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.05);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Outfit', sans-serif;
+  --transition-fast: 0.2s ease-out;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --glass-blur: blur(16px);
+  --hero-orb-1: var(--accent-purple);
+  --hero-orb-2: var(--accent-cyan);
+  --selection-bg: var(--accent-cyan);
+  --selection-color: #000;
+  --theme-is-light: 0;
+}
+
+/* ─── Cyberpunk 2077 ─── */
+body[data-theme='cyberpunk'] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --accent-cyan: #00f0ff;
+  --accent-pink: #ff2a6d;
+  --accent-red: #ff3366;
+  --accent-crimson: #c8003c;
+  --accent-purple: #8a2be2;
+  --grid-color: rgba(252, 238, 10, 0.04);
+  --border-glow: rgba(252, 238, 10, 0.35);
+  --surface: rgba(14, 14, 20, 0.75);
+  --card-border: 1px solid rgba(252, 238, 10, 0.2);
+  --card-shadow: 0 12px 40px rgba(252, 238, 10, 0.06);
+  --hero-orb-1: #ff2a6d;
+  --hero-orb-2: #00f0ff;
+  --selection-bg: #fcee0a;
+  --selection-color: #000;
+}
+
+/* ─── BGMI ─── */
+body[data-theme='bgmi'] {
+  --bg-primary: #1a1f0e;
+  --bg-secondary: #252b14;
+  --text-primary: #e8e4d9;
+  --text-secondary: #9a9478;
+  --accent-cyan: #f5a623;
+  --accent-pink: #c4a35a;
+  --accent-red: #d4552a;
+  --accent-crimson: #8b4513;
+  --accent-purple: #6b8e23;
+  --grid-color: rgba(245, 166, 35, 0.04);
+  --border-glow: rgba(245, 166, 35, 0.35);
+  --surface: rgba(26, 31, 14, 0.85);
+  --card-border: 1px solid rgba(245, 166, 35, 0.2);
+  --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  --font-mono: 'Rajdhani', 'JetBrains Mono', monospace;
+  --font-sans: 'Rajdhani', 'Outfit', sans-serif;
+  --hero-orb-1: #6b8e23;
+  --hero-orb-2: #f5a623;
+  --selection-bg: rgba(245, 166, 35, 0.35);
+  --selection-color: #e8e4d9;
+}
+
+/* ─── Valorant ─── */
+body[data-theme='valorant'] {
+  --bg-primary: #0f1923;
+  --bg-secondary: #1a2733;
+  --text-primary: #ece8e1;
+  --text-secondary: #8b978f;
+  --accent-cyan: #ff4655;
+  --accent-pink: #17d3c7;
+  --accent-red: #ff4655;
+  --accent-crimson: #bd3944;
+  --accent-purple: #17d3c7;
+  --grid-color: rgba(255, 70, 85, 0.04);
+  --border-glow: rgba(255, 70, 85, 0.35);
+  --surface: rgba(15, 25, 35, 0.88);
+  --card-border: 1px solid rgba(255, 70, 85, 0.2);
+  --card-shadow: 0 12px 40px rgba(255, 70, 85, 0.08);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Outfit', sans-serif;
+  --hero-orb-1: #ff4655;
+  --hero-orb-2: #17d3c7;
+  --selection-bg: rgba(255, 70, 85, 0.4);
+  --selection-color: #ece8e1;
+}
+
+/* ─── Black Myth Wukong ─── */
+body[data-theme='wukong'] {
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1510;
+  --text-primary: #f0e6d3;
+  --text-secondary: #a89880;
+  --accent-cyan: #c9a227;
+  --accent-pink: #2d6a4f;
+  --accent-red: #8b0000;
+  --accent-crimson: #6b0000;
+  --accent-purple: #d4af37;
+  --grid-color: rgba(201, 162, 39, 0.04);
+  --border-glow: rgba(201, 162, 39, 0.35);
+  --surface: rgba(13, 13, 13, 0.9);
+  --card-border: 1px solid rgba(201, 162, 39, 0.25);
+  --card-shadow: 0 12px 40px rgba(201, 162, 39, 0.06);
+  --font-mono: 'Noto Serif SC', 'Georgia', serif;
+  --font-sans: 'Noto Serif SC', 'Georgia', serif;
+  --hero-orb-1: #2d6a4f;
+  --hero-orb-2: #c9a227;
+  --selection-bg: rgba(201, 162, 39, 0.3);
+  --selection-color: #f0e6d3;
+}
+
+/* ─── Sekiro ─── */
+body[data-theme='sekiro'] {
+  --bg-primary: #0a0808;
+  --bg-secondary: #141010;
+  --text-primary: #d4cfc8;
+  --text-secondary: #7a7570;
+  --accent-cyan: #c41e3a;
+  --accent-pink: #b8860b;
+  --accent-red: #8b0000;
+  --accent-crimson: #5c0000;
+  --accent-purple: #b8860b;
+  --grid-color: rgba(196, 30, 58, 0.03);
+  --border-glow: rgba(196, 30, 58, 0.3);
+  --surface: rgba(10, 8, 8, 0.92);
+  --card-border: 1px solid rgba(196, 30, 58, 0.2);
+  --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --font-mono: 'Noto Serif JP', 'Georgia', serif;
+  --font-sans: 'Noto Serif JP', 'Georgia', serif;
+  --hero-orb-1: #8b0000;
+  --hero-orb-2: #c41e3a;
+  --selection-bg: rgba(196, 30, 58, 0.35);
+  --selection-color: #d4cfc8;
+}
+
+/* ─── Figma ─── */
+body[data-theme='figma'] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #1e1e1e;
+  --text-secondary: #666666;
+  --accent-cyan: #a259ff;
+  --accent-pink: #0acf83;
+  --accent-red: #f24e1e;
+  --accent-crimson: #ff7262;
+  --accent-purple: #0d99ff;
+  --grid-color: rgba(162, 89, 255, 0.06);
+  --border-glow: rgba(162, 89, 255, 0.3);
+  --surface: rgba(255, 255, 255, 0.92);
+  --card-border: 1px solid rgba(162, 89, 255, 0.2);
+  --card-shadow: 0 12px 40px rgba(162, 89, 255, 0.08);
+  --font-mono: 'Inter', 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', 'Outfit', sans-serif;
+  --hero-orb-1: #0acf83;
+  --hero-orb-2: #a259ff;
+  --selection-bg: rgba(162, 89, 255, 0.2);
+  --selection-color: #1e1e1e;
+  --theme-is-light: 1;
+}
+
+/* ─── Photoshop ─── */
+body[data-theme='photoshop'] {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e8e8e8;
+  --text-secondary: #999999;
+  --accent-cyan: #31a8ff;
+  --accent-pink: #001e36;
+  --accent-red: #ff6b6b;
+  --accent-crimson: #cc0000;
+  --accent-purple: #7cc6ff;
+  --grid-color: rgba(49, 168, 255, 0.04);
+  --border-glow: rgba(49, 168, 255, 0.35);
+  --surface: rgba(45, 45, 45, 0.9);
+  --card-border: 1px solid rgba(49, 168, 255, 0.2);
+  --card-shadow: 0 12px 40px rgba(49, 168, 255, 0.06);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Outfit', sans-serif;
+  --hero-orb-1: #001e36;
+  --hero-orb-2: #31a8ff;
+  --selection-bg: rgba(49, 168, 255, 0.35);
+  --selection-color: #e8e8e8;
+}
+
+/* ─── Sketch Portrait ─── */
+body[data-theme='sketch'] {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #ebe4d8;
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --accent-cyan: #c45c48;
+  --accent-pink: #6b6b6b;
+  --accent-red: #a04030;
+  --accent-crimson: #8b3626;
+  --accent-purple: #4a4a4a;
+  --grid-color: rgba(44, 44, 44, 0.04);
+  --border-glow: rgba(196, 92, 72, 0.3);
+  --surface: rgba(245, 240, 232, 0.95);
+  --card-border: 1px solid rgba(44, 44, 44, 0.15);
+  --card-shadow: 0 12px 40px rgba(44, 44, 44, 0.08);
+  --font-mono: 'Courier New', monospace;
+  --font-sans: 'Playfair Display', 'Georgia', serif;
+  --hero-orb-1: #6b6b6b;
+  --hero-orb-2: #c45c48;
+  --selection-bg: rgba(196, 92, 72, 0.2);
+  --selection-color: #2c2c2c;
+  --theme-is-light: 1;
+}
+
+/* ─── Digital Art ─── */
+body[data-theme='digital-art'] {
+  --bg-primary: #121218;
+  --bg-secondary: #1a1a24;
+  --text-primary: #f0f0f5;
+  --text-secondary: #9898a8;
+  --accent-cyan: #e040fb;
+  --accent-pink: #00bcd4;
+  --accent-red: #ff5252;
+  --accent-crimson: #d500f9;
+  --accent-purple: #2979ff;
+  --grid-color: rgba(224, 64, 251, 0.04);
+  --border-glow: rgba(224, 64, 251, 0.35);
+  --surface: rgba(18, 18, 24, 0.88);
+  --card-border: 1px solid rgba(224, 64, 251, 0.2);
+  --card-shadow: 0 12px 40px rgba(224, 64, 251, 0.08);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Outfit', sans-serif;
+  --hero-orb-1: #2979ff;
+  --hero-orb-2: #e040fb;
+  --selection-bg: rgba(224, 64, 251, 0.35);
+  --selection-color: #f0f0f5;
+}
