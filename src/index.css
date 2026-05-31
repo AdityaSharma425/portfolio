@@ -832,7 +832,18 @@ body[data-theme='photoshop'] .experience-card:hover {
   }
 
   .site-header-actions {
-    gap: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .theme-switcher-btn {
+    min-width: 34px !important;
+    height: 34px !important;
+    padding: 0 6px !important;
+  }
+
+  .sound-toggle-btn {
+    width: 34px !important;
+    height: 34px !important;
   }
 
   /* Typography scale down */

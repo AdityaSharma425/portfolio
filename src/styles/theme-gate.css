@@ -504,10 +504,14 @@ body[data-perf='lite'] .theme-gate-category-pill {
   }
 
   .theme-gate-hero-content {
-    left: 1.25rem;
-    right: 1.25rem;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 6.5rem;
+    padding: 0 1.25rem 2.5rem;
     max-width: none;
-    bottom: 8%;
+    z-index: 3;
   }
 
   .theme-gate-brand {
