@@ -190,7 +190,6 @@ const CustomCursor = ({ currentTheme }) => {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const burstRef = useRef([]);
-  const rafRef = useRef(null);
   const posRef = useRef({ targetX: -100, targetY: -100, ringX: -100, ringY: -100 });
   const lastHoverBurst = useRef(0);
 
@@ -200,50 +199,50 @@ const CustomCursor = ({ currentTheme }) => {
   const secondary = theme.colors.secondary;
   const particleType = theme.particles;
 
-  const scheduleFrame = useCallback(() => {
-    if (rafRef.current != null) return;
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null;
-      tickRef.current?.();
-    });
-  }, []);
-
-  const tickRef = useRef(null);
-  tickRef.current = () => {
-    const pos = posRef.current;
-    let keepGoing = false;
-
-    if (finePointer && dotWrapRef.current && ringWrapRef.current) {
-      pos.ringX += (pos.targetX - pos.ringX) * LERP;
-      pos.ringY += (pos.targetY - pos.ringY) * LERP;
-      dotWrapRef.current.style.transform = `translate3d(${pos.targetX}px, ${pos.targetY}px, 0) translate(-50%, -50%)`;
-      ringWrapRef.current.style.transform = `translate3d(${pos.ringX}px, ${pos.ringY}px, 0) translate(-50%, -50%)`;
-
-      if (Math.abs(pos.targetX - pos.ringX) > 0.4 || Math.abs(pos.targetY - pos.ringY) > 0.4) {
-        keepGoing = true;
-      }
-    }
-
-    if (burstRef.current.length > 0) {
-      const ctx = ctxRef.current;
-      if (ctx) {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        burstRef.current = burstRef.current.filter((p) => {
-          drawBurstParticle(ctx, p);
-          return updateBurstParticle(p);
-        });
-        keepGoing = keepGoing || burstRef.current.length > 0;
-      }
-    }
-
-    if (keepGoing) scheduleFrame();
-  };
-
   const spawnBurst = useCallback((x, y, intensity) => {
     if (!cursorEffects) return;
     burstRef.current.push(...createCursorBurst(particleType, x, y, intensity));
-    scheduleFrame();
-  }, [particleType, cursorEffects, scheduleFrame]);
+  }, [particleType, cursorEffects]);
+
+  // Continuous animation loop for absolute smoothness and zero lag/stuck bugs
+  useEffect(() => {
+    if (!finePointer) return;
+
+    let rafId;
+    const tick = () => {
+      const pos = posRef.current;
+
+      // Snappy and ultra-smooth positioning updates with lerp
+      pos.ringX += (pos.targetX - pos.ringX) * 0.32;
+      pos.ringY += (pos.targetY - pos.ringY) * 0.32;
+
+      if (dotWrapRef.current) {
+        dotWrapRef.current.style.transform = `translate3d(${pos.targetX}px, ${pos.targetY}px, 0) translate(-50%, -50%)`;
+      }
+      if (ringWrapRef.current) {
+        ringWrapRef.current.style.transform = `translate3d(${pos.ringX}px, ${pos.ringY}px, 0) translate(-50%, -50%)`;
+      }
+
+      // Draw burst particles on canvas smoothly
+      if (cursorEffects && canvasRef.current) {
+        const ctx = ctxRef.current;
+        if (ctx) {
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+          if (burstRef.current.length > 0) {
+            burstRef.current = burstRef.current.filter((p) => {
+              drawBurstParticle(ctx, p);
+              return updateBurstParticle(p);
+            });
+          }
+        }
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [finePointer, cursorEffects]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -270,7 +269,6 @@ const CustomCursor = ({ currentTheme }) => {
       posRef.current.targetX = e.clientX;
       posRef.current.targetY = e.clientY;
       if (rootRef.current) rootRef.current.style.opacity = '1';
-      scheduleFrame();
     };
 
     const onDown = (e) => {
@@ -282,8 +280,13 @@ const CustomCursor = ({ currentTheme }) => {
 
     const onOver = (e) => {
       if (!finePointer) return;
-      const interactive = isInteractive(e.target);
-      setHovered(!!interactive);
+      const interactive = !!isInteractive(e.target);
+      setHovered((prev) => {
+        if (prev !== interactive) {
+          return interactive;
+        }
+        return prev;
+      });
       if (interactive) {
         const now = performance.now();
         if (now - lastHoverBurst.current > HOVER_DEBOUNCE_MS) {
@@ -313,9 +316,8 @@ const CustomCursor = ({ currentTheme }) => {
       window.removeEventListener('mouseover', onOver);
       document.documentElement.removeEventListener('mouseenter', onEnter);
       document.documentElement.removeEventListener('mouseleave', onLeave);
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
     };
-  }, [finePointer, spawnBurst, scheduleFrame]);
+  }, [finePointer, spawnBurst]);
 
   if (!cursorEffects && !finePointer) return null;
 

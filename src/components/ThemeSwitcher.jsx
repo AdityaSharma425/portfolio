@@ -65,12 +65,25 @@ const ThemeSwitcher = ({ currentTheme, onThemeChange }) => {
                   className={`interactive theme-switcher-item ${currentTheme === theme.id ? 'active' : ''}`}
                   style={{
                     borderColor: currentTheme === theme.id ? theme.colors.accent : 'transparent',
-                    background: currentTheme === theme.id ? `${theme.colors.accent}18` : 'transparent',
+                    background: currentTheme === theme.id ? `${theme.colors.accent}12` : 'transparent',
+                    color: currentTheme === theme.id ? theme.colors.accent : 'var(--text-primary)',
                   }}
                   title={theme.name}
                 >
                   <span style={{ fontSize: '1.2rem' }}>{theme.emoji}</span>
                   <span className="theme-switcher-label">{theme.name}</span>
+                  {currentTheme === theme.id && (
+                    <motion.span
+                      layoutId="activeThemeIndicator"
+                      style={{
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        background: theme.colors.accent,
+                        boxShadow: `0 0 8px ${theme.colors.accent}`,
+                      }}
+                    />
+                  )}
                 </button>
               ))}
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getTheme, isLightTheme } from '../themes';
+import resumePdf from '../files/AdityaSharma-CV.pdf';
 
 const HeroDecor = ({ decor }) => {
   const baseStyle = {
@@ -310,6 +311,29 @@ const Hero = ({ currentTheme }) => {
               <line x1="12" y1="19" x2="20" y2="19" />
             </svg>
             Initialize Projects
+          </a>
+          <a
+            href={resumePdf}
+            download="AdityaSharma-CV.pdf"
+            className="interactive glass-panel"
+            style={{
+              padding: '12px 28px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: 'var(--text-primary)',
+              background: 'rgba(255, 255, 255, 0.05)',
+              fontWeight: 600,
+              border: '1px solid var(--accent-cyan)',
+              borderRadius: '4px',
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Retrieve CV
           </a>
           <a
             href="#contact"
