@@ -20,7 +20,7 @@ export function getPerformanceProfile() {
   return {
     lite,
     ambient: !lite,
-    cursorEffects: !reducedMotion,
+    cursorEffects: !reducedMotion && !touchPrimary,
     reducedMotion,
   };
 }
