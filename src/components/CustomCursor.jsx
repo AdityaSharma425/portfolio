@@ -248,9 +248,16 @@ const CustomCursor = ({ currentTheme }) => {
     const canvas = canvasRef.current;
     if (!canvas || !cursorEffects) return;
 
-    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+    let ctx;
+    try {
+      ctx = canvas.getContext('2d', { alpha: true, desynchronized: true }) || canvas.getContext('2d');
+    } catch (e) {
+      ctx = canvas.getContext('2d');
+    }
     ctxRef.current = ctx;
+
     const resize = () => {
+      if (!ctx) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;

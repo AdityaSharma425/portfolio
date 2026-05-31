@@ -113,6 +113,16 @@ body[data-theme='sketch'] .glass-panel:hover {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
+.hero-btn {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+}
+
 /* Glitch Effect */
 .glitch {
   position: relative;
@@ -810,13 +820,42 @@ body[data-theme='photoshop'] .experience-card:hover {
 @media (max-width: 900px) {
   .theme-switcher-panel {
     position: fixed;
-    top: auto;
-    bottom: 0;
+    top: 0;
+    bottom: auto;
     left: 0;
     right: 0;
-    width: 100%;
-    max-height: 70vh;
-    border-radius: 16px 16px 0 0;
+    width: 100vw;
+    max-height: 80vh;
+    padding: 3.5rem 1.25rem 1.5rem;
+    border-radius: 0 0 24px 24px;
+    border: none;
+    border-bottom: 1px solid var(--border-glow);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    background: var(--bg-secondary) !important;
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+  }
+
+  .theme-switcher-panel::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 1.5rem auto 0;
+  }
+
+  .theme-switcher-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .theme-switcher-item {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -886,11 +925,7 @@ body[data-theme='photoshop'] .experience-card:hover {
     gap: 1rem !important;
   }
 
-  /* Theme switcher mobile */
-  .theme-switcher-panel {
-    width: 280px;
-    right: -1rem;
-  }
+
 
   .theme-selector-content {
     padding: 0.5rem;

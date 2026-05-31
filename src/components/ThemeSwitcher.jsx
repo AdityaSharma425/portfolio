@@ -5,8 +5,16 @@ import { changeTheme } from '../utils/changeTheme';
 
 const ThemeSwitcher = ({ currentTheme, onThemeChange }) => {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const panelRef = useRef(null);
   const active = getTheme(currentTheme);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    handleResize();
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -22,6 +30,20 @@ const ThemeSwitcher = ({ currentTheme, onThemeChange }) => {
     if (themeId !== currentTheme) changeTheme(themeId, onThemeChange);
     setOpen(false);
   };
+
+  const motionProps = isMobile
+    ? {
+        initial: { y: '-100%', opacity: 0.9 },
+        animate: { y: 0, opacity: 1 },
+        exit: { y: '-100%', opacity: 0.9 },
+        transition: { type: 'spring', damping: 26, stiffness: 210 },
+      }
+    : {
+        initial: { opacity: 0, y: -8, scale: 0.95 },
+        animate: { opacity: 1, y: 0, scale: 1 },
+        exit: { opacity: 0, y: -8, scale: 0.95 },
+        transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
+      };
 
   return (
     <div ref={panelRef} style={{ position: 'relative' }}>
@@ -48,10 +70,7 @@ const ThemeSwitcher = ({ currentTheme, onThemeChange }) => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            {...motionProps}
             className="theme-switcher-panel glass-panel"
           >
             <div className="mono-text" style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', letterSpacing: '2px', marginBottom: '0.75rem', padding: '0 4px' }}>

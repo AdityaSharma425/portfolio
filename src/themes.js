@@ -144,23 +144,6 @@ export const THEMES = [
     terminal: { kernel: 'Sketch Pad Shell', variant: 'light' },
     ui: { cardStyle: 'paper', badgeStyle: 'sketch', divider: 'hatch', buttonShape: 'sketch', sectionFrame: 'easel' },
   },
-  {
-    id: 'digital-art',
-    name: 'Digital Art',
-    category: 'art',
-    tag: 'CREATIVE_FLOW',
-    emoji: '🌈',
-    tagline: 'Flow state. Color explosions. Pure creation.',
-    description: 'Vibrant paint splatters, gradient name effects, rainbow cursor, and boundless creative energy.',
-    features: ['Paint splatters', 'Gradient typography', 'Rainbow cursor'],
-    colors: { accent: '#e040fb', secondary: '#00bcd4', bg: '#121218', cardBg: 'rgba(18, 18, 24, 0.92)' },
-    preview: { gradient: 'linear-gradient(135deg, #121218 0%, #1a0a2e 40%, #0a1a2e 100%)', scene: 'digital-art' },
-    hero: { badge: 'FLOW STATE // AVAILABLE FOR HIRE', nameEffect: 'gradient', decor: 'palette-splash', orbIntensity: 0.2 },
-    particles: 'splatter',
-    cursor: { glow: true, dotSize: 10, ringStyle: 'rainbow', ringSize: 28, hoverRing: 42 },
-    terminal: { kernel: 'Creative Terminal', variant: 'dark' },
-    ui: { cardStyle: 'splatter', badgeStyle: 'palette', divider: 'splash', buttonShape: 'blob', sectionFrame: 'canvas' },
-  },
 ];
 
 export const THEME_IDS = THEMES.map((t) => t.id);

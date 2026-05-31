@@ -293,7 +293,7 @@ const Hero = ({ currentTheme }) => {
         >
           <a
             href="#projects"
-            className="interactive glass-panel"
+            className="interactive hero-btn"
             style={{
               padding: '12px 28px',
               display: 'inline-flex',
@@ -315,7 +315,7 @@ const Hero = ({ currentTheme }) => {
           <a
             href={resumePdf}
             download="AdityaSharma-CV.pdf"
-            className="interactive glass-panel"
+            className="interactive hero-btn"
             style={{
               padding: '12px 28px',
               display: 'inline-flex',
@@ -337,7 +337,7 @@ const Hero = ({ currentTheme }) => {
           </a>
           <a
             href="#contact"
-            className="interactive glass-panel"
+            className="interactive hero-btn"
             style={{
               padding: '12px 28px',
               display: 'inline-flex',

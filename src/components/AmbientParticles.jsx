@@ -24,7 +24,14 @@ const AmbientParticles = ({ currentTheme }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+    let ctx;
+    try {
+      ctx = canvas.getContext('2d', { alpha: true, desynchronized: true }) || canvas.getContext('2d');
+    } catch (e) {
+      ctx = canvas.getContext('2d');
+    }
+    if (!ctx) return;
+
     let animationFrameId;
     let particles = [];
     let isVisible = true;
@@ -37,7 +44,7 @@ const AmbientParticles = ({ currentTheme }) => {
 
     const handleVisibility = () => {
       isVisible = document.visibilityState === 'visible';
-      if (isVisible) animationFrameId = requestAnimationFrame(animate);
+      if (isVisible && ctx) animationFrameId = requestAnimationFrame(animate);
     };
 
     const onScroll = () => {
@@ -47,6 +54,7 @@ const AmbientParticles = ({ currentTheme }) => {
     };
 
     const resizeCanvas = () => {
+      if (!ctx) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
@@ -85,6 +93,7 @@ const AmbientParticles = ({ currentTheme }) => {
         }
       }
       draw() {
+        if (!ctx) return;
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
         ctx.beginPath();
@@ -98,7 +107,7 @@ const AmbientParticles = ({ currentTheme }) => {
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      if (!isVisible || isScrolling) return;
+      if (!isVisible || isScrolling || !ctx) return;
 
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       for (let i = 0; i < particles.length; i++) {
